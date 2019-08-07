@@ -3,13 +3,16 @@
     <b-jumbotron>
 
       <template slot="lead">
-        {{currentQuestion.question}}
+        <div v-html="currentQuestion.question">
+          {{currentQuestion.question}}
+        </div>
       </template>
 
       <hr class="my-4">
 
       <b-list-group>
         <b-list-group-item
+          v-html="answer"
           v-for= "(answer, index) in shuffledAnswers"
           :key="index"
           @click.prevent="selectAnswer(index)"
@@ -29,6 +32,9 @@
       <b-button @click="next" variant="success">
         Next
       </b-button>
+      <div v-show="index>9">
+        <p>Feddich</p>
+      </div>
     </b-jumbotron>
   </div>
 </template>
@@ -40,7 +46,8 @@
     props: {
       currentQuestion: Object,
       next: Function,
-      increment: Function
+      increment: Function,
+      index: Number
     },
     data() {
       return {
@@ -50,13 +57,13 @@
         answered: false,
       }
     },
-    computed: {
-      answers() {
-        let answers = [...this.currentQuestion.incorrect_answers]
-        answers.push(this.currentQuestion.correct_answer)
-        return answers
-      }
-    },
+    // computed: {
+    //   answers() {
+    //     let answers = [...this.currentQuestion.incorrect_answers]
+    //     answers.push(this.currentQuestion.correct_answer)
+    //     return answers
+    //   }
+    // },
     watch: {
       currentQuestion: {
         immediate: true,
@@ -103,6 +110,9 @@
 
 
 <style scoped>
+  .jumbotron {
+      padding: 2rem 2rem;
+    }
   .list-group{
     margin-bottom: 1rem;
   }
