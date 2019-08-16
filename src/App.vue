@@ -18,7 +18,7 @@
 
         <b-col sm="6" offset="3">
           <QuestionBox
-            v-if="selected_category!= 0 && questions.length"
+            v-if="selected_category!= 0 && questions.length && index < 10"
             :currentQuestion = "questions[index]"
             :next="next"
             :increment="increment"
