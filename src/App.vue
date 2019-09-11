@@ -7,16 +7,18 @@
 
     <b-container class="bv-example-row">
       <b-row>
-        <b-col sm="4" offset="4" class="cat_select_container">
+        <b-col class="cat_select_container">
+            <div class="current_cat_container">
+              <h2> {{currentCategory}} </h2>
+            </div>
             <b-form-select v-model="selected_category" :select-size="2">
               <option v-for="category in categories" v-bind:value="category.id">
                 {{category.name}}
               </option>
             </b-form-select>
-              <h2> {{currentCategory}} </h2>
         </b-col>
 
-        <b-col sm="6" offset="3">
+        <b-col offset="1">
           <QuestionBox
             v-if="selected_category!= 0 && questions.length && index < 10"
             :currentQuestion = "questions[index]"
@@ -97,17 +99,34 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
   margin-top: 60px;
+  background-color: rgb(255, 234, 234);
+  min-height: 100vh;
 }
 #radio-group-2{
   display: flex;
 }
-.cat_select_container{
-  margin: 0.5rem 0;
+.bv-example-row {
+  padding: 5.5rem 0 ;
+  display: flex;
+  align-items: center;
+}
+
+.current_cat_container {
+  height: 85px;
 }
 .custom-select{
   text-align: center;
   margin-bottom: 1rem;
+  min-height: 60vh;
+  min-width: 290px;
 }
+.custom-select:focus{
+  border-color: grey!important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 17, 0, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 17, 0, 0.25)!important;
+}
+
+
 </style>
