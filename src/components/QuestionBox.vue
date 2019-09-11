@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <b-jumbotron>
 
       <template slot="lead">
@@ -110,13 +110,21 @@
 
 
 <style scoped>
+  .container {
+    display: flex;
+    justify-content: center;
+  }
   .jumbotron {
     padding: 2rem 2rem;
-    margin-top: calc(85px/2);
     background-color: lightcoral;
     box-shadow: 0 0 9px 2px rgb(51, 51, 51);
     border-radius: 10px;
+    width: 80%;
+    height: 500px;
     }
+  .lead {
+    height: 100px;
+  }  
   .list-group{
     margin-bottom: 1rem;
   }
