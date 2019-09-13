@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <Header
-      :numCorrect="numCorrect"
-      :numTotal="numTotal"
-    />
+    <Header/>
 
     <b-container class="bv-example-row">
       <b-row>
         <b-col class="cat_select_container col-sm-4">
             <div class="current_cat_container">
-              <h2> {{currentCategory}} </h2>
+              <h2 v-if="currentCategory != 0"> {{currentCategory}} </h2>
+              <h2 v-else>Category</h2>
             </div>
-            <b-form-select v-model="selected_category" :select-size="2">
+            <b-form-select v-model="selected_category" :select-size="1">
               <option v-for="category in categories" v-bind:value="category.id">
                 {{category.name}}
               </option>
@@ -19,6 +17,9 @@
         </b-col>
 
         <b-col class="col-sm-8">
+          <div class="counter-container">
+            <p v-show="currentCategory.length != 0">Points: {{numCorrect}}/{{numTotal}}</p>
+          </div>
           <QuestionBox
             v-if="selected_category!= 0 && questions.length && index < 10"
             :currentQuestion = "questions[index]"
@@ -58,7 +59,7 @@ export default {
       numTotal: 0,
       categories: [],
       selected_category: '',
-      currentCategory: ''
+      currentCategory: '',
     }
   },
   methods: {
@@ -108,7 +109,7 @@ export default {
   text-align: center;
   color: black;
   margin-top: 60px;
-  background-color: rgb(255, 234, 234);
+  background-color:#263056;
   min-height: 100vh;
 }
 #radio-group-2{
@@ -128,16 +129,13 @@ export default {
   height: 85px;
   margin-bottom: 1rem;
 }
-.custom-select{
-  text-align: center;
-  margin-bottom: 1rem;
-  min-height: 400px;
-  min-width: 100%;
+.current_cat_container h2 {
+  color: white;
+  font-size: 28px;
+  text-transform: uppercase;
 }
-.custom-select:focus{
-  border-color: grey!important;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 17, 0, 0.25);
-  box-shadow: 0 0 0 0.2rem rgba(255, 17, 0, 0.25)!important;
+.counter-container {
+  height: 60px;
 }
 
 

@@ -3,7 +3,7 @@
         <p v-if="numTotal == 10">
             You've got {{numCorrect}} out of {{numTotal}}
         </p>
-        <p v-else>Choose a category to begin</p>
+        <p v-else>Choose a category to start</p>
     </div>
 </template>
 
@@ -18,5 +18,14 @@ export default {
 
 
 <style>
-
+    .message_container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    p {
+        color: white;
+        font-size: 28px;
+    }
 </style>

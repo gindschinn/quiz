@@ -3,7 +3,7 @@
     <b-jumbotron>
 
       <template slot="lead">
-        <div v-html="currentQuestion.question">
+        <div class="question" v-html="currentQuestion.question">
           {{currentQuestion.question}}
         </div>
       </template>
@@ -29,12 +29,9 @@
       >
         Submit
       </b-button>
-      <b-button @click="next" variant="success">
+      <b-button class="btn-nxt" @click="next" variant="success">
         Next
       </b-button>
-      <div v-show="index>9">
-        <p>Feddich</p>
-      </div>
     </b-jumbotron>
   </div>
 </template>
@@ -113,18 +110,28 @@
   .container {
     display: flex;
     justify-content: center;
+    align-items: baseline;
   }
   .jumbotron {
     padding: 2rem 2rem;
+    margin: 0;
     background-color: lightcoral;
-    box-shadow: 0 0 9px 2px rgb(51, 51, 51);
+    border: 1px solid rgb(238, 110, 110);
+    box-shadow: inset 10px 10px 5px -9px rgba(255,255,255,0.4), 10px 10px 5px -7px rgba(0,0,0,0.75);
     border-radius: 10px;
     width: 80%;
-    height: 500px;
+    height: 450px;
     }
   .lead {
     height: 100px;
-  }  
+  }
+  .question {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: black;
+  }
   .list-group{
     margin-bottom: 1rem;
   }
@@ -135,12 +142,22 @@
   .btn{
     margin: 0 0.5rem;
   }
+  .btn-nxt {
+    background-color:  #98DDDE;
+    color: black;
+    border: 1px solid rgb(111, 197, 199);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+  }
+  .btn-nxt:hover {
+    background-color: rgb(73, 165, 167);
+    border: none;
+  }
   .btn:disabled{
     background: lightgrey;
     border: 0;
   }
   .selected{
-    background: lightblue;
+    background: #98DDDE;
   }
   .correct{
     background: #a3c952;
