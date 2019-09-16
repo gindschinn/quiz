@@ -1,9 +1,11 @@
 <template>
     <div class="message_container">
-        <p v-if="numTotal == 10">
-            You've got {{numCorrect}} out of {{numTotal}}
-        </p>
-        <p v-else>Choose a category to start</p>
+        <div v-if="numTotal == 10">
+            <p>You got {{numCorrect}} out of {{numTotal}} correct</p>
+        </div>
+        <div v-else>
+            <p><i>Choose a category to start</i></p>
+        </div>
     </div>
 </template>
 
